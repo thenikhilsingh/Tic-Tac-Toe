@@ -32,11 +32,16 @@ const board = (function GBoardFunc() {
     }
   }
   //clear board
-  function clearBoard() {}
+  function clearBoard() {
+    GBoard.Gameboard = [
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+    ];
+  }
   //isBoardFull
   function isBoardFull() {
-    if (GBoard.Gameboard[0][0] !== "") {
-    } else if (
+    if (
       GBoard.Gameboard[0][0] !== "" &&
       GBoard.Gameboard[0][1] !== "" &&
       GBoard.Gameboard[0][2] !== "" &&
@@ -47,13 +52,21 @@ const board = (function GBoardFunc() {
       GBoard.Gameboard[2][1] !== "" &&
       GBoard.Gameboard[2][2] !== ""
     ) {
-      console.log("The board is full");
+      // The board is full
+      clearBoard();
+      console.log("It is a Tie");
     } else {
-      console.log("The board is not full");
+      //The board is not full"
     }
   }
 
-  return { boardprint, getCellValue, setCellValue, clearBoard, isBoardFull };
+  return {
+    boardprint,
+    getCellValue,
+    setCellValue,
+    clearBoard,
+    isBoardFull,
+  };
 })();
 
 const userFuncVar = (function userFunc() {
@@ -75,7 +88,7 @@ const userFuncVar = (function userFunc() {
     let k = parseInt(prompt("enter column values between 0 to 2"));
 
     if (j >= 0 && j < 3 && k >= 0 && k < 3) {
-      setCellValue(j, k, activeUser);
+      board.setCellValue(j, k, activeUser);
       board.boardprint();
       activeUser = userTurnFunc();
     } else {
@@ -91,204 +104,220 @@ const gameControllerFuncVar = (function gameController() {
   function checkWhoWins() {
     if (
       //horizontally
-      getCellValue(0, 0) == "X" &&
-      getCellValue(0, 1) == "X" &&
-      getCellValue(0, 2) == "X"
+      board.getCellValue(0, 0) == "X" &&
+      board.getCellValue(0, 1) == "X" &&
+      board.getCellValue(0, 2) == "X"
     ) {
       tellWhoWins();
+      board.clearBoard();
     } else if (
-      getCellValue(1, 0) == "X" &&
-      getCellValue(1, 1) == "X" &&
-      getCellValue(1, 2) == "X"
+      board.getCellValue(1, 0) == "X" &&
+      board.getCellValue(1, 1) == "X" &&
+      board.getCellValue(1, 2) == "X"
     ) {
       tellWhoWins();
+      board.clearBoard();
     } else if (
-      getCellValue(2, 0) == "X" &&
-      getCellValue(2, 1) == "X" &&
-      getCellValue(2, 2) == "X"
+      board.getCellValue(2, 0) == "X" &&
+      board.getCellValue(2, 1) == "X" &&
+      board.getCellValue(2, 2) == "X"
     ) {
       tellWhoWins();
+      board.clearBoard();
     } else if (
-      getCellValue(0, 0) == "O" &&
-      getCellValue(0, 1) == "O" &&
-      getCellValue(0, 2) == "O"
+      board.getCellValue(0, 0) == "O" &&
+      board.getCellValue(0, 1) == "O" &&
+      board.getCellValue(0, 2) == "O"
     ) {
       tellWhoWins();
+      board.clearBoard();
     } else if (
-      getCellValue(1, 0) == "O" &&
-      getCellValue(1, 1) == "O" &&
-      getCellValue(1, 2) == "O"
+      board.getCellValue(1, 0) == "O" &&
+      board.getCellValue(1, 1) == "O" &&
+      board.getCellValue(1, 2) == "O"
     ) {
       tellWhoWins();
+      board.clearBoard();
     } else if (
-      getCellValue(2, 0) == "O" &&
-      getCellValue(2, 1) == "O" &&
-      getCellValue(2, 2) == "O"
+      board.getCellValue(2, 0) == "O" &&
+      board.getCellValue(2, 1) == "O" &&
+      board.getCellValue(2, 2) == "O"
     ) {
       tellWhoWins();
+      board.clearBoard();
     } else if (
       //vertically
-      getCellValue(0, 0) == "X" &&
-      getCellValue(1, 0) == "X" &&
-      getCellValue(2, 0) == "X"
+      board.getCellValue(0, 0) == "X" &&
+      board.getCellValue(1, 0) == "X" &&
+      board.getCellValue(2, 0) == "X"
     ) {
       tellWhoWins();
+      board.clearBoard();
     } else if (
-      getCellValue(0, 1) == "X" &&
-      getCellValue(1, 1) == "X" &&
-      getCellValue(2, 1) == "X"
+      board.getCellValue(0, 1) == "X" &&
+      board.getCellValue(1, 1) == "X" &&
+      board.getCellValue(2, 1) == "X"
     ) {
       tellWhoWins();
+      board.clearBoard();
     } else if (
-      getCellValue(0, 2) == "X" &&
-      getCellValue(1, 2) == "X" &&
-      getCellValue(2, 2) == "X"
+      board.getCellValue(0, 2) == "X" &&
+      board.getCellValue(1, 2) == "X" &&
+      board.getCellValue(2, 2) == "X"
     ) {
       tellWhoWins();
+      board.clearBoard();
     } else if (
-      getCellValue(0, 0) == "O" &&
-      getCellValue(1, 0) == "O" &&
-      getCellValue(2, 0) == "O"
+      board.getCellValue(0, 0) == "O" &&
+      board.getCellValue(1, 0) == "O" &&
+      board.getCellValue(2, 0) == "O"
     ) {
       tellWhoWins();
+      board.clearBoard();
     } else if (
-      getCellValue(0, 1) == "O" &&
-      getCellValue(1, 1) == "O" &&
-      getCellValue(2, 1) == "O"
+      board.getCellValue(0, 1) == "O" &&
+      board.getCellValue(1, 1) == "O" &&
+      board.getCellValue(2, 1) == "O"
     ) {
       tellWhoWins();
+      board.clearBoard();
     } else if (
-      getCellValue(0, 2) == "O" &&
-      getCellValue(1, 2) == "O" &&
-      getCellValue(2, 2) == "O"
+      board.getCellValue(0, 2) == "O" &&
+      board.getCellValue(1, 2) == "O" &&
+      board.getCellValue(2, 2) == "O"
     ) {
       tellWhoWins();
+      board.clearBoard();
     } else if (
       //diagonally
-      getCellValue(0, 0) == "X" &&
-      getCellValue(1, 1) == "X" &&
-      getCellValue(2, 2) == "X"
+      board.getCellValue(0, 0) == "X" &&
+      board.getCellValue(1, 1) == "X" &&
+      board.getCellValue(2, 2) == "X"
     ) {
       tellWhoWins();
+      board.clearBoard();
     } else if (
-      getCellValue(0, 2) == "X" &&
-      getCellValue(1, 1) == "X" &&
-      getCellValue(2, 0) == "X"
+      board.getCellValue(0, 2) == "X" &&
+      board.getCellValue(1, 1) == "X" &&
+      board.getCellValue(2, 0) == "X"
     ) {
       tellWhoWins();
+      board.clearBoard();
     } else if (
-      getCellValue(0, 2) == "O" &&
-      getCellValue(1, 1) == "O" &&
-      getCellValue(2, 0) == "O"
+      board.getCellValue(0, 2) == "O" &&
+      board.getCellValue(1, 1) == "O" &&
+      board.getCellValue(2, 0) == "O"
     ) {
       tellWhoWins();
+      board.clearBoard();
     } else if (
-      getCellValue(0, 2) == "O" &&
-      getCellValue(1, 1) == "O" &&
-      getCellValue(2, 0) == "O"
+      board.getCellValue(0, 2) == "O" &&
+      board.getCellValue(1, 1) == "O" &&
+      board.getCellValue(2, 0) == "O"
     ) {
       tellWhoWins();
+      board.clearBoard();
     }
   }
   //tell who wins
   function tellWhoWins() {
     if (
       //horizontally
-      getCellValue(0, 0) == "X" &&
-      getCellValue(0, 1) == "X" &&
-      getCellValue(0, 2) == "X"
+      board.getCellValue(0, 0) == "X" &&
+      board.getCellValue(0, 1) == "X" &&
+      board.getCellValue(0, 2) == "X"
     ) {
       console.log("user1 wins and user2 loses");
     } else if (
-      getCellValue(1, 0) == "X" &&
-      getCellValue(1, 1) == "X" &&
-      getCellValue(1, 2) == "X"
+      board.getCellValue(1, 0) == "X" &&
+      board.getCellValue(1, 1) == "X" &&
+      board.getCellValue(1, 2) == "X"
     ) {
       console.log("user1 wins and user2 loses");
     } else if (
-      getCellValue(2, 0) == "X" &&
-      getCellValue(2, 1) == "X" &&
-      getCellValue(2, 2) == "X"
+      board.getCellValue(2, 0) == "X" &&
+      board.getCellValue(2, 1) == "X" &&
+      board.getCellValue(2, 2) == "X"
     ) {
       console.log("user1 wins and user2 loses");
     } else if (
-      getCellValue(0, 0) == "O" &&
-      getCellValue(0, 1) == "O" &&
-      getCellValue(0, 2) == "O"
+      board.getCellValue(0, 0) == "O" &&
+      board.getCellValue(0, 1) == "O" &&
+      board.getCellValue(0, 2) == "O"
     ) {
       console.log("user2 wins and user1 loses");
     } else if (
-      getCellValue(1, 0) == "O" &&
-      getCellValue(1, 1) == "O" &&
-      getCellValue(1, 2) == "O"
+      board.getCellValue(1, 0) == "O" &&
+      board.getCellValue(1, 1) == "O" &&
+      board.getCellValue(1, 2) == "O"
     ) {
       console.log("user2 wins and user1 loses");
     } else if (
-      getCellValue(2, 0) == "O" &&
-      getCellValue(2, 1) == "O" &&
-      getCellValue(2, 2) == "O"
+      board.getCellValue(2, 0) == "O" &&
+      board.getCellValue(2, 1) == "O" &&
+      board.getCellValue(2, 2) == "O"
     ) {
       console.log("user2 wins and user1 loses");
     } else if (
       //vertically
-      getCellValue(0, 0) == "X" &&
-      getCellValue(1, 0) == "X" &&
-      getCellValue(2, 0) == "X"
+      board.getCellValue(0, 0) == "X" &&
+      board.getCellValue(1, 0) == "X" &&
+      board.getCellValue(2, 0) == "X"
     ) {
       console.log("user1 wins and user2 loses");
     } else if (
-      getCellValue(0, 1) == "X" &&
-      getCellValue(1, 1) == "X" &&
-      getCellValue(2, 1) == "X"
+      board.getCellValue(0, 1) == "X" &&
+      board.getCellValue(1, 1) == "X" &&
+      board.getCellValue(2, 1) == "X"
     ) {
       console.log("user1 wins and user2 loses");
     } else if (
-      getCellValue(0, 2) == "X" &&
-      getCellValue(1, 2) == "X" &&
-      getCellValue(2, 2) == "X"
+      board.getCellValue(0, 2) == "X" &&
+      board.getCellValue(1, 2) == "X" &&
+      board.getCellValue(2, 2) == "X"
     ) {
       console.log("user1 wins and user2 loses");
     } else if (
-      getCellValue(0, 0) == "O" &&
-      getCellValue(1, 0) == "O" &&
-      getCellValue(2, 0) == "O"
+      board.getCellValue(0, 0) == "O" &&
+      board.getCellValue(1, 0) == "O" &&
+      board.getCellValue(2, 0) == "O"
     ) {
       console.log("user2 wins and user1 loses");
     } else if (
-      getCellValue(0, 1) == "O" &&
-      getCellValue(1, 1) == "O" &&
-      getCellValue(2, 1) == "O"
+      board.getCellValue(0, 1) == "O" &&
+      board.getCellValue(1, 1) == "O" &&
+      board.getCellValue(2, 1) == "O"
     ) {
       console.log("user2 wins and user1 loses");
     } else if (
-      getCellValue(0, 2) == "O" &&
-      getCellValue(1, 2) == "O" &&
-      getCellValue(2, 2) == "O"
+      board.getCellValue(0, 2) == "O" &&
+      board.getCellValue(1, 2) == "O" &&
+      board.getCellValue(2, 2) == "O"
     ) {
       console.log("user2 wins and user1 loses");
     } else if (
       //diagonally
-      getCellValue(0, 0) == "X" &&
-      getCellValue(1, 1) == "X" &&
-      getCellValue(2, 2) == "X"
+      board.getCellValue(0, 0) == "X" &&
+      board.getCellValue(1, 1) == "X" &&
+      board.getCellValue(2, 2) == "X"
     ) {
       console.log("user1 wins and user2 loses");
     } else if (
-      getCellValue(0, 2) == "X" &&
-      getCellValue(1, 1) == "X" &&
-      getCellValue(2, 0) == "X"
+      board.getCellValue(0, 2) == "X" &&
+      board.getCellValue(1, 1) == "X" &&
+      board.getCellValue(2, 0) == "X"
     ) {
       console.log("user1 wins and user2 loses");
     } else if (
-      getCellValue(0, 2) == "O" &&
-      getCellValue(1, 1) == "O" &&
-      getCellValue(2, 0) == "O"
+      board.getCellValue(0, 2) == "O" &&
+      board.getCellValue(1, 1) == "O" &&
+      board.getCellValue(2, 0) == "O"
     ) {
       console.log("user2 wins and user1 loses");
     } else if (
-      getCellValue(0, 2) == "O" &&
-      getCellValue(1, 1) == "O" &&
-      getCellValue(2, 0) == "O"
+      board.getCellValue(0, 2) == "O" &&
+      board.getCellValue(1, 1) == "O" &&
+      board.getCellValue(2, 0) == "O"
     ) {
       console.log("user2 wins and user1 loses");
     }
@@ -296,7 +325,9 @@ const gameControllerFuncVar = (function gameController() {
   //iterate loop function
   function iterationLoopFunc() {
     for (let t = 0; t < 9; t++) {
-      userFuncVar.UserInput();
+      // userFuncVar.UserInput();
+      checkWhoWins();
+      board.isBoardFull();
     }
   }
   iterationLoopFunc();
